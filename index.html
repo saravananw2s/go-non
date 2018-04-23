@@ -76,7 +76,11 @@
 var app = angular.module('myApp', []);
 app.controller('myCtrl', function($scope, $http) {
 	$scope.items=[];
-    $http.get("http://gononveg.com/api/showOrders")
+    $http.get("http://gononveg.com/api/showOrders",{
+    headers: {'Access-Control-Allow-Origin': '*',
+"Access-Control-Allow-Credentials": "true",
+"Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE",}
+  })
     .then(function(response) {
         $scope.records = response.data;
         for(var i=0;i<$scope.records.length;i++){
