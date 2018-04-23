@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <title></title>
+  <style type="text/css">
+  td{
+            padding: 10px;
+                text-align: center;
+
+  }
+  </style>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+<header id="topnav">
+  <div class="inner">
+    <div class="logo" style="width: 100px"><img src="go.png" style="width: 72%"></div>
+    <nav role='navigation'>
+      <ul>
+        <li><a href="index.html">Orders</a></li>
+        <li><a href="#">Stores</a></li>
+        <li><a href="customer.html">Customers</a></li>
+        <li><a href="#">Employess</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="report.html">Sales Reports</a></li>
+
+      </ul>
+    </nav>  
+  </div>
+</header>
+<div>
+  <table style="width: 100%">
+    <thead style="background: gold">
+    <tr><td>Prouduct Name</td>
+    <td>Prouduct Image</td>
+    <td>Prouduct Id</td>
+    <td>Prouduct Category</td>
+    <td>Prouduct Price</td></tr>
+
+    </thead>
+    <tbody>
+      <tr style="background: darkgrey" ng-repeat="x in items track by $index">
+      <td>{{ x.name }}</td>
+      <td>{{x.image}}</td>
+      <td>{{x.id}}</td>
+      <td>{{x.cate}}</td>
+      <td>{{x.price}}</td>
+      <td><button ng-click="stschanged(x.id)">Update</button></td>
+    </tr>
+    <tr style="background: #b7b720" ng-repeat="x in items1 track by $index">
+      <td>{{ x.name }}</td>
+      <td>{{x.image}}</td>
+      <td>{{x.id}}</td>
+      <td>{{x.cate}}</td>
+      <td>{{x.price}}</td>
+            <td><button ng-click="stschanged(x.id)">Update</button></td>
+
+    </tr>
+    <tr style="background: bisque" ng-repeat="x in items2 track by $index">
+      <td>{{ x.name }}</td>
+      <td>{{x.image}}</td>
+      <td>{{x.id}}</td>
+      <td>{{x.cate}}</td>
+      <td>{{x.price}}</td>
+            <td><button ng-click="stschanged(x.id)">Update</button></td>
+
+    </tr>
+    <tr style="background: greenyellow" ng-repeat="x in items3 track by $index">
+      <td>{{ x.name }}</td>
+      <td>{{x.image}}</td>
+      <td>{{x.id}}</td>
+      <td>{{x.cate}}</td>
+      <td>{{x.price}}</td>
+            <td><button ng-click="stschanged(x.id)">Update</button></td>
+
+    </tr>
+    </tbody>
+  </table>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-aria.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-messages.min.js"></script>
+
+  <!-- Angular Material Library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.js"></script>
+ <script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope, $http) {
+  $scope.items=[];
+  $scope.items1=[];
+  $scope.items2=[];
+  $scope.items3=[];
+
+    $http.get("http://gononveg.com/items")
+    .then(function(response) {
+        $scope.records = response.data;
+        $scope.items = $scope.records.ch;
+        $scope.items1 = $scope.records.fs;
+        $scope.items2 = $scope.records.mt;
+        $scope.items3 = $scope.records.ms;
+                console.log($scope.items2);
+
+
+    });
+     $scope.stschanged = function(id){
+          var   x=prompt("Enter The Today Price");
+         $http.post('http://gononveg.com/api/updateprice?id='+id+'&price='+x)
+    .then(function(response) { 
+$http.get("http://gononveg.com/items")
+    .then(function(response) {
+        $scope.records = response.data;
+        $scope.items = $scope.records.ch;
+        $scope.items1 = $scope.records.fs;
+        $scope.items2 = $scope.records.mt;
+        $scope.items3 = $scope.records.ms;
+                console.log($scope.items2);
+
+
+    });    });
+    }
+
+});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <title></title>
+   <style type="text/css">
+  td{
+            padding: 10px;
+                text-align: center;
+
+  }
+  </style>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+<header id="topnav">
+  <div class="inner">
+    <div class="logo" style="width: 100px"><img src="go.png" style="width: 72%"></div>
+    <nav role='navigation'>
+      <ul>
+        <li><a href="index.html">Orders</a></li>
+        <li><a href="#">Stores</a></li>
+        <li><a href="#">Customers</a></li>
+        <li><a href="#">Employess</a></li>
+        <li><a href="products.html">Products</a></li>
+        <li><a href="report.html">Sales Reports</a></li>
+
+      </ul>
+    </nav>  
+  </div>
+</header>
+
+<table style="width: 100%">
+    <thead style="background: gold">
+    <tr><td>Name</td>
+    <td>Number</td>
+    <td>Street</td>
+    <td>City</td>
+    <td>Pincode</td></tr>
+
+    </thead>
+    <tbody ng-repeat="x in records track by $index">
+      <tr style="background: darkgrey">
+      <td>{{ x.name }}</td>
+      <td>{{x.number}}</td>
+      <td>{{x.street}}</td>
+      <td>{{x.city}}</td>
+      <td>{{x.pincode}}</td>
+    </tr>
+    </tbody>
+  </table>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-aria.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-messages.min.js"></script>
+
+  <!-- Angular Material Library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.js"></script>
+ <script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope, $http) {
+  $scope.items="sachin";
+    $http.get("http://gononveg.com/api/showuser")
+    .then(function(response) {
+        $scope.records = response.data.Persons;
+        console.log($scope.records);
+    });
+
+});
+
+</script>
+</body>
+
+
+</html>
