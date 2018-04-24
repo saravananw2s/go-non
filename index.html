@@ -1,70 +1,311 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" type="text/css" href="css/style.css">
   <title></title>
-</head>
-<body ng-app="myApp" ng-controller="myCtrl">
-<header id="topnav">
-  <div class="inner">
-    <div class="logo" style="width: 100px"><img src="go.png" style="width: 72%"></div>
-    <nav role='navigation'>
-      <ul>
-        <li><a href="index.html">Orders</a></li>
-        <li><a href="#">Stores</a></li>
-        <li><a href="customer.html">Customers</a></li>
-        <li><a href="#">Employess</a></li>
-        <li><a href="products.html">Products</a></li>
-        <li><a href="report.html">Sales Reports</a></li>
+  <style type="text/css">
+    @import url('https://fonts.googleapis.com/css?family=Cinzel|Comfortaa|Mina|Ropa+Sans|Sunflower:300');
 
-      </ul>
-    </nav>  
+body{
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background: #2196f3;
+}
+
+input, button{
+  border: none;
+}
+
+button{
+  cursor: pointer;
+  transition: ease-in-out 0.3s;
+}
+
+button:hover{
+  transform: scale(1.2);
+}
+
+*:focus{
+  outline: none;
+}
+
+/* Section one */
+#section-one{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#section-one .login-modal{
+  background-color: #F2F2F2;
+  width: 450px;
+  height: 620px;
+  margin: 60px 30px;
+  -webkit-box-shadow: 0px 0px 19px -1px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 19px -1px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 19px -1px rgba(0,0,0,0.75);
+}
+
+#section-one .login-modal .close-btn a{
+  position: relative;
+  font-size: 1.5em;
+  color: #444;
+  display: none;
+}
+
+#section-one .login-modal h1{
+  text-align:center;
+  position: relative;
+  top: 30px;
+  padding-bottom: 70px;
+  color: #777;
+  font-family: Arial;
+  font-size: 1.6em;
+}
+
+#section-one .login-modal input{
+  display: block;
+  margin: 20px auto;
+  font-size: .85em;
+}
+
+#section-one .login-modal input[type="text"]{
+  border-bottom: 2px solid #ddd;
+  width: 80%;
+  padding: 15px 8px;
+  transition: ease-in-out .4s;
+}
+
+#section-one .login-modal input[type="password"]{
+  border-bottom: 2px solid #ddd;
+  width: 80%;
+  padding: 15px 8px;
+  transition: ease-in-out .4s;
+}
+
+#section-one .login-modal a{
+  text-decoration: none;
+  float: right;
+  right: 40px;
+  position: relative;
+  font-size: 0.80em;
+  color: #0A92BF;
+}
+
+#section-one .login-modal input[type="submit"]{
+  margin-top: 80px;
+  width: 80%;
+  padding: 15px 0;
+  border-radius: 30px;
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: 400;
+  opacity: 0.9;
+  transition: ease-in-out .2s;
+  cursor: pointer;
+  letter-spacing: 1px;
+  background: rgba(59,103,165,1);
+  background: -moz-linear-gradient(45deg, rgba(59,103,165,1) 0%, rgba(56,105,168,1) 5%, rgba(21,117,208,1) 29%, rgba(6,122,224,1) 39%, rgba(6,133,224,1) 62%, rgba(21,166,249,1) 100%);
+  background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(59,103,165,1)), color-stop(5%, rgba(56,105,168,1)), color-stop(29%, rgba(21,117,208,1)), color-stop(39%, rgba(6,122,224,1)), color-stop(62%, rgba(6,133,224,1)), color-stop(100%, rgba(21,166,249,1)));
+  background: -webkit-linear-gradient(45deg, rgba(59,103,165,1) 0%, rgba(56,105,168,1) 5%, rgba(21,117,208,1) 29%, rgba(6,122,224,1) 39%, rgba(6,133,224,1) 62%, rgba(21,166,249,1) 100%);
+  background: -o-linear-gradient(45deg, rgba(59,103,165,1) 0%, rgba(56,105,168,1) 5%, rgba(21,117,208,1) 29%, rgba(6,122,224,1) 39%, rgba(6,133,224,1) 62%, rgba(21,166,249,1) 100%);
+  background: -ms-linear-gradient(45deg, rgba(59,103,165,1) 0%, rgba(56,105,168,1) 5%, rgba(21,117,208,1) 29%, rgba(6,122,224,1) 39%, rgba(6,133,224,1) 62%, rgba(21,166,249,1) 100%);
+  background: linear-gradient(45deg, rgba(59,103,165,1) 0%, rgba(56,105,168,1) 5%, rgba(21,117,208,1) 29%, rgba(6,122,224,1) 39%, rgba(6,133,224,1) 62%, rgba(21,166,249,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b67a5', endColorstr='#15a6f9', GradientType=1 );
+}
+
+#section-one .login-modal input[type="submit"]:hover{
+  opacity: 1;
+}
+
+#section-one .login-modal .login-modal-text{
+  position: relative;
+  left: 165px;
+  top: 20px;
+  color: #888;
+  font-size: 0.85em;
+  letter-spacing: 0.80px;
+}
+
+#section-one .login-modal .login-with button{
+  position: relative;
+  top: 50px;
+  left: 75px;
+  padding: 15px 30px;
+  margin-left: 20px;
+  border-radius: 50%;
+  background: #fff;
+  -webkit-box-shadow: 0 2px 5px 0 rgba(55, 161, 255, 0.26), 0 4px 12px 0 rgba(121, 155, 254, 0.25);
+    box-shadow: 0 2px 5px 0 rgba(55, 161, 255, 0.26), 0 4px 12px 0 rgba(121, 155, 254, 0.25);
+  border: 1px solid #ddd;
+}
+
+#section-one .login-modal .login-with i{
+  color: #2196f3;
+}
+
+#section-one .login-modal .login-modal-footer span{
+  position: relative;
+  top: 110px;
+  left: 155px;
+  font-size: 0.80em;
+}
+
+#section-one .login-modal .login-modal-footer a{
+  position: relative;
+  top: 112px;
+  right: 155px;
+  font-size: 1em;
+}
+
+
+/* Section two */
+#section-two{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#section-two .login-modal{
+  background-color: #F2F2F2;
+  width: 450px;
+  height: 620px;
+  margin: 60px 30px;
+  -webkit-box-shadow: 0px 0px 19px -1px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 19px -1px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 19px -1px rgba(0,0,0,0.75);
+}
+
+#section-two .login-modal .close-btn a{
+  position: relative;
+  font-size: 1.5em;
+  color: #444;
+  display: none;
+}
+
+#section-two .login-modal h1{
+  text-align:center;
+  position: relative;
+  top: 30px;
+  padding-bottom: 70px;
+  color: #777;
+  font-family: Arial;
+  font-size: 1.6em;
+}
+
+#section-two .login-modal input{
+  display: block;
+  margin: 20px auto;
+  font-size: .85em;
+}
+
+#section-two .login-modal input[type="text"]{
+  border-bottom: 2px solid #ddd;
+  width: 80%;
+  padding: 15px 8px;
+}
+
+#section-two .login-modal input[type="password"]{
+  border-bottom: 2px solid #ddd;
+  width: 80%;
+  padding: 15px 8px;
+}
+
+#section-two .login-modal a{
+  text-decoration: none;
+  float: right;
+  right: 40px;
+  position: relative;
+  font-size: 0.80em;
+  color: #0A92BF;
+}
+
+#section-two .login-modal input[type="submit"]{
+  margin-top: 80px;
+  width: 80%;
+  padding: 15px 0;
+  border-radius: 30px;
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: 400;
+  opacity: 0.9;
+  transition: ease-in-out .2s;
+  cursor: pointer;
+  letter-spacing: 1px;
+  background: rgba(59,103,165,1);
+  background: -moz-linear-gradient(45deg, rgba(59,103,165,1) 0%, rgba(56,105,168,1) 5%, rgba(21,117,208,1) 29%, rgba(6,122,224,1) 39%, rgba(6,133,224,1) 62%, rgba(21,166,249,1) 100%);
+  background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(59,103,165,1)), color-stop(5%, rgba(56,105,168,1)), color-stop(29%, rgba(21,117,208,1)), color-stop(39%, rgba(6,122,224,1)), color-stop(62%, rgba(6,133,224,1)), color-stop(100%, rgba(21,166,249,1)));
+  background: -webkit-linear-gradient(45deg, rgba(59,103,165,1) 0%, rgba(56,105,168,1) 5%, rgba(21,117,208,1) 29%, rgba(6,122,224,1) 39%, rgba(6,133,224,1) 62%, rgba(21,166,249,1) 100%);
+  background: -o-linear-gradient(45deg, rgba(59,103,165,1) 0%, rgba(56,105,168,1) 5%, rgba(21,117,208,1) 29%, rgba(6,122,224,1) 39%, rgba(6,133,224,1) 62%, rgba(21,166,249,1) 100%);
+  background: -ms-linear-gradient(45deg, rgba(59,103,165,1) 0%, rgba(56,105,168,1) 5%, rgba(21,117,208,1) 29%, rgba(6,122,224,1) 39%, rgba(6,133,224,1) 62%, rgba(21,166,249,1) 100%);
+  background: linear-gradient(45deg, rgba(59,103,165,1) 0%, rgba(56,105,168,1) 5%, rgba(21,117,208,1) 29%, rgba(6,122,224,1) 39%, rgba(6,133,224,1) 62%, rgba(21,166,249,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3b67a5', endColorstr='#15a6f9', GradientType=1 );
+}
+
+#section-two .login-modal input[type="submit"]:hover{
+  opacity: 1;
+}
+
+#section-two .login-modal .login-modal-text{
+  position: relative;
+  left: 165px;
+  top: 20px;
+  color: #888;
+  font-size: 0.85em;
+  letter-spacing: 0.80px;
+}
+
+#section-two .login-modal .login-with button{
+  position: relative;
+  top: 50px;
+  left: 75px;
+  padding: 15px 30px;
+  margin-left: 20px;
+  border-radius: 50%;
+  background: #fff;
+  -webkit-box-shadow: 0 2px 5px 0 rgba(55, 161, 255, 0.26), 0 4px 12px 0 rgba(121, 155, 254, 0.25);
+    box-shadow: 0 2px 5px 0 rgba(55, 161, 255, 0.26), 0 4px 12px 0 rgba(121, 155, 254, 0.25);
+  border: 1px solid #ddd;
+}
+
+#section-two .login-modal .login-with i{
+  color: #2196f3;
+}
+
+#section-two .login-modal .login-modal-footer span{
+  position: relative;
+  top: 110px;
+  left: 155px;
+  font-size: 0.80em;
+}
+
+#section-two .login-modal .login-modal-footer a{
+  position: relative;
+  top: 112px;
+  right: 155px;
+  font-size: 1em;
+}
+  </style>
+</head>
+<body style="background: #2c8e2ad6" ng-app="myApp" ng-controller="myCtrl">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.0/css/hover-min.css">
+
+<section id="section-one">
+  <div class="login-modal">
+    <div class="close-btn">
+      <a href="#">&times;</a>
+    </div>
+    <img src="go.png" style="    width: 39%;
+    margin-left: 135px">
+        <h1>ADMIN LOGIN</h1>
+
+    <form>
+      <input type="text" name="email" placeholder="Your email" ng-model="name">
+      <input type="password" name="password" placeholder="Your password" ng-model="password">
+    </form>
+    <input type="submit" name="login" value="Login" ng-click = "login()">
   </div>
-</header>
-<div style="position: fixed;right: 132px;top: 52%;font-size: 39px;">
-	PENDING ORDERS
-	<BR><span style="font-size: 139px;color:  green;">{{records.length}}</span>
-</div>
-<div style="width: 50%;border: 1px solid;margin: 5px;box-shadow: grey 2px 2px 2px;background: #8080801f" ng-repeat="x in records track by $index">
-<section style="width: 554px;margin: 28px;">
-  <table style="width: 94%;margin-left: 5%;margin-right: 1%;">
-    <tr>
-      <td><p style="color: orange">ORDER ID <span># {{x.ID}}</span></p></td>  <td style="color: orangered"><i class="fa fa-inr" aria-hidden="true"></i>1000</td>   
-    </tr>
-    <tr>
-      <table style="width: 100%" ng-repeat="item in items[$index]">
-        <tr><td style="width: 40%"><p>{{item.item}}</p></td>
-        <td style="width: 25%"><span ng-if = "item.weight == 1">500 gms</span><span ng-if = "item.weight == 2">1000 gms</span></td><td style="width: 15%">{{item.qty}}</td><td style="width: 25%"><i class="fa fa-inr" aria-hidden="true"></i>{{item.prize}}</td></tr>
-      </table>
-    </tr>
-    <BUTTON style="    /* float: right; */
-    margin-left: 31em !important;
-    margin: 13px;
-    background: none;
-    border: 1px solid orange;
-    background: orange;
-    padding-left: 36px !important;
-    padding: 6px;
-    padding-right: 36px !important" ng-click="stschanged(x.ID)">ASSIGN</BUTTON>
-  </table>
 </section>
-<section style="width: 554px;/* border: 1px solid; */margin: 28px;">
-  <table style="width: 100%">
-        <tr><td style="width: 40%"><p>NAME</p></td>
-        <td style="width: 25%">{{x.name}}</td></tr>
-        <tr><td style="width: 40%">ADDRESS</td>
-        <td style="width: 25%">{{x.address}}</td></tr>
-        <tr><td style="width: 40%">SCHEDULE</td>
-        <td style="width: 25%">{{x.sedate }} {{x.setime}}</td></tr>
-         <tr><td style="width: 40%">PAYMENT</td>
-        <td style="width: 25%">{{x.payment}}</td></tr>
-        <tr><td style="width: 40%">PINCODE</td>
-        <td style="width: 25%">{{x.store}}</td></tr>
-         <tr><td style="width: 40%">MOBILE NUMBER</td>
-        <td style="width: 25%">{{x.number}}</td></tr>
-      </table>
-</section>
-</div>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-aria.min.js"></script>
@@ -72,46 +313,22 @@
 
   <!-- Angular Material Library -->
   <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.js"></script>
- <script>
-var app = angular.module('myApp', []);
+<script type="text/javascript">
+  var app = angular.module('myApp', []);
 app.controller('myCtrl', function($scope, $http) {
-	$scope.items=[];
-    $http.get("http://gononveg.com/api/showOrders",{
-    headers: {'Access-Control-Allow-Origin': '*',
-"Access-Control-Allow-Credentials": "true",
-"Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE",}
-  })
+     $scope.login = function(id){
+
+       $http.post('http://gononveg.com/api/adminsignin?name='+$scope.name+'&pwd='+$scope.password,)
     .then(function(response) {
-        $scope.records = response.data;
-        for(var i=0;i<$scope.records.length;i++){
-        	$scope.items[i]=JSON.parse($scope.records[i].items);
+        $scope.records = response.data.login;
+        if($scope.records == 'validuser'){
+          window.location.href = "index1.html"
+        }else{
+          alert("In Valid Login");
         }
-        console.log($scope.items);
-        console.log($scope.records);
-    });
-    $scope.stschanged = function(id){
-    	 $http.post("http://gononveg.com/api/stschage?id="+id,)
-    .then(function(response) {
-        
-        
-	$scope.items=[];
-    $http.get("http://gononveg.com/api/showOrders")
-    .then(function(response) {
-        $scope.records = response.data;
-        for(var i=0;i<$scope.records.length;i++){
-        	$scope.items[i]=JSON.parse($scope.records[i].items);
-        }
-        console.log($scope.items);
-        console.log($scope.records);
-    });
     });
     }
-
-});
-
+    });
 </script>
-
-
-
 </body>
 </html>
