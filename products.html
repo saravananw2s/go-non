@@ -91,8 +91,8 @@ app.controller('myCtrl', function($scope, $http) {
   $scope.items1=[];
   $scope.items2=[];
   $scope.items3=[];
-
-    $http.get("http://gononveg.com/items")
+	var place=prompt("Enter the Pincode");
+   $http.get('http://gononveg.com/items'+'?place='+place)
     .then(function(response) {
         $scope.records = response.data;
         $scope.items = $scope.records.ch;
@@ -105,9 +105,9 @@ app.controller('myCtrl', function($scope, $http) {
     });
      $scope.stschanged = function(id){
           var   x=prompt("Enter The Today Price");
-         $http.post('http://gononveg.com/api/updateprice?id='+id+'&price='+x)
+         $http.post('http://gononveg.com/api/updateprice?id='+id+'&price='+x+'&place='+place)
     .then(function(response) { 
-$http.get("http://gononveg.com/items")
+$http.get('http://gononveg.com/items'+'?place='+place)
     .then(function(response) {
         $scope.records = response.data;
         $scope.items = $scope.records.ch;

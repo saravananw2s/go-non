@@ -29,7 +29,7 @@
 <section style="width: 554px;margin: 28px;">
   <table style="width: 94%;margin-left: 5%;margin-right: 1%;">
     <tr>
-      <td><p style="color: orange">ORDER ID <span># {{x.ID}}</span></p></td>  <td style="color: orangered"><i class="fa fa-inr" aria-hidden="true"></i>1000</td>   
+      <td><p style="color: orange">ORDER ID <span># {{x.ID}}</span></p></td>  <td style="color: orangered"><i class="fa fa-inr" aria-hidden="true"></i>{{ x.totalprice }}</td>   
     </tr>
     <tr>
       <table style="width: 100%" ng-repeat="item in items[$index]">
