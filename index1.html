@@ -12,11 +12,11 @@
     <nav role='navigation'>
       <ul>
         <li><a href="index1.html">Orders</a></li>
-        <li><a href="#">Stores</a></li>
-        <li><a href="customer.html">Customers</a></li>
-        <li><a href="#">Employess</a></li>
-        <li><a href="products.html">Products</a></li>
-        <li><a href="report.html">Sales Reports</a></li>
+        <li ng-if="!vis"><a href="store.html">Stores</a></li>
+        <li ng-if="!vis"><a href="customer.html">Customers</a></li>
+        <li ng-if="!vis"><a href="#">Employess</a></li>
+        <li ng-if="!vis"><a href="products.html">Products</a></li>
+        <li ng-if="!vis"><a href="report.html">Sales Reports</a></li>
 
       </ul>
     </nav>  
@@ -30,7 +30,7 @@
 <section style="width: 554px;margin: 28px;">
   <table style="width: 94%;margin-left: 5%;margin-right: 1%;">
     <tr>
-      <td><p style="color: orange">ORDER ID <span># {{x.ID}}</span></p></td>  <td style="color: orangered"><i class="fa fa-inr" aria-hidden="true"></i>1000</td>   
+      <td><p style="color: orange">ORDER ID <span># {{x.ID}}</span></p></td>  <td style="color: orangered"><i class="fa fa-inr" aria-hidden="true"></i><span>{{x.totalprice}}</span></td>   
     </tr>
     <tr>
       <table style="width: 100%" ng-repeat="item in items[$index]">
@@ -82,9 +82,14 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.js"></script>
  <script>
 var app = angular.module('myApp', []);
-app.controller('myCtrl', function($scope, $http) {
+app.controller('myCtrl', function($scope, $http ,$window) {
   $scope.items=[];
-    $http.get("http://gononveg.com/api/showOrders",{headers:{
+  $scope.vis = true;
+  var pincode= $window.localStorage.getItem('ls');
+  if(pincode == '00000'){
+    $scope.vis = false;
+  }
+    $http.post("http://gononveg.com/api/showOrders?pincode="+pincode,{headers:{
 'Access-Control-Allow-Origin': 'http://gononveg.com/',
 "Access-Control-Allow-Credentials": "true",
 "Access-Control-Allow-Methods": "POST, GET, OPTIONS, DELETE",'Access-Control-Allow-Headers':'Accept,Authorization,Cache-Control,Content-Type,DNT,If-Modified-Since,Keep-Alive,Origin,User-Agent,X-Requested-With'}}

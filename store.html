@@ -11,12 +11,12 @@
     <div class="logo" style="width: 100px"><img src="go.png" style="width: 72%"></div>
     <nav role='navigation'>
       <ul>
-        <li><a href="#">Orders</a></li>
-        <li><a href="#">Stores</a></li>
-        <li><a href="#">Customers</a></li>
-        <li><a href="#">Employess</a></li>
-        <li><a href="#">IDUS Payments</a></li>
-        <li><a href="#">Sales Reports</a></li>
+         <li><a href="index1.html">Orders</a></li>
+        <li ng-if="!vis"><a href="store.html">Stores</a></li>
+        <li ng-if="!vis"><a href="customer.html">Customers</a></li>
+        <li ng-if="!vis"><a href="#">Employess</a></li>
+        <li ng-if="!vis"><a href="products.html">Products</a></li>
+        <li ng-if="!vis"><a href="report.html">Sales Reports</a></li>
 
       </ul>
     </nav>  
@@ -29,12 +29,18 @@
     <input type="text" name="pincode" id="pincode" style="margin: 2%; width: 96%; border: 2px solid green; border-radius: 15px; padding: 1%" placeholder="Enter Store Pincode">
     <input type="text" name="name" style="margin: 2%; width: 96%; border: 2px solid green; border-radius: 15px; padding: 1%"  placeholder="Enter Store Category">
     <input type="file" name="imageupload" id="imageupload" style="margin: 2%; width: 96%; border-radius: 15px; padding: 1%" file-model = "myFile">
-    <input type="button" name="" style="margin: 2%; width: 96%; color: white; text-transform: uppercase; background: green; border: 2px solid green; border-radius: 15px; padding: 1%" ng-click="updatepin()">
+    <input type="button" name="" style="margin: 2%; width: 96%; color: white; text-transform: uppercase; background: green; border: 2px solid green; border-radius: 15px; padding: 1%" value ="ADD STORE" ng-click="updatepin()">
+    <input type="text" name="name" style="margin: 2%; width: 96%; border: 2px solid green; border-radius: 15px; padding: 1%"  placeholder="Enter Pincode">
+<input type="submit" name="" style="margin: 2%; width: 96%; color: white; text-transform: uppercase; background: orange; border: 2px solid orange; border-radius: 15px; padding: 1%" value="DELETE USER" ng-click="updatepin()">
   </form>
 </section>
 </div>
 <div style="width: 50%" style="float: left;">
-  <input type="submit" name="" style="margin: 2%; width: 96%; color: white; text-transform: uppercase; background: green; border: 2px solid green; border-radius: 15px; padding: 1%" value="RESET SLOTS" onclick="updatepin()">
+  <input type="submit" name="" style="margin: 2%; width: 96%; color: white; text-transform: uppercase; background: green; border: 2px solid green; border-radius: 15px; padding: 1%" value="RESET SLOTS" ng-click="updatepin()">
+  <input type="text" name="pincode" id="pincode" style="margin: 2%; width: 96%; border: 2px solid green; border-radius: 15px; padding: 1%" placeholder="Enter UserName">
+  <input type="text" name="name" style="margin: 2%; width: 96%; border: 2px solid green; border-radius: 15px; padding: 1%"  placeholder="Enter Password">
+  <input type="text" name="name" style="margin: 2%; width: 96%; border: 2px solid green; border-radius: 15px; padding: 1%"  placeholder="Enter Pincode">
+<input type="submit" name="" style="margin: 2%; width: 96%; color: white; text-transform: uppercase; background: blue; border: 2px solid blue; border-radius: 15px; padding: 1%" value="ADD USER" ng-click="updatepin()">
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-animate.min.js"></script>
@@ -42,9 +48,10 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-messages.min.js"></script>
 
   <!-- Angular Material Library -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-base64/2.0.5/angular-base64.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.8/angular-material.min.js"></script>
 <script type="text/javascript">
-    var app = angular.module('myApp', []);
+    var app = angular.module('myApp', ['base64']);
        app.directive('fileModel', ['$parse', function ($parse) {
             return {
                restrict: 'A',
@@ -61,10 +68,22 @@
             };
          }]);
       
-app.controller('myCtrl', function($scope, $http ) {
+app.controller('myCtrl', function($scope, $http ,$base64) {
         $scope.updatepin = function(){
         	var selectedFile = document.getElementById('imageupload').files[0];
-  $http.post("http://gononveg.com/api/uploadfile?image="+selectedFile)
+
+                         var file = $scope.myFile;
+                         var imageData=$base64.encode(file);
+                         var imageData=$base64.decode(imageData);
+
+                         console.dir(imageData);
+
+                        console.dir(file);
+
+                         var fd = new FormData();
+               fd.append('image', file);
+               alert(fd);
+  $http.post("http://gononveg.com/api/uploadfile?data="+file)
     .then(function(response) {
         $scope.records1 = response.data;
         for(var i=0;i<$scope.records.length;i++){

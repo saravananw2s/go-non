@@ -10,12 +10,12 @@
     <div class="logo" style="width: 100px"><img src="go.png" style="width: 72%"></div>
     <nav role='navigation'>
       <ul>
-        <li><a href="#">Orders</a></li>
-        <li><a href="#">Stores</a></li>
-        <li><a href="#">Customers</a></li>
-        <li><a href="#">Employess</a></li>
-        <li><a href="#">IDUS Payments</a></li>
-        <li><a href="#">Sales Reports</a></li>
+         <li><a href="index1.html">Orders</a></li>
+        <li ng-if="!vis"><a href="store.html">Stores</a></li>
+        <li ng-if="!vis"><a href="customer.html">Customers</a></li>
+        <li ng-if="!vis"><a href="#">Employess</a></li>
+        <li ng-if="!vis"><a href="products.html">Products</a></li>
+        <li ng-if="!vis"><a href="report.html">Sales Reports</a></li>
 
       </ul>
     </nav>  
